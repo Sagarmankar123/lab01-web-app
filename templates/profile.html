@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Profile: {{ target['username'] }}</h1>
+<table>
+  <tr><th>ID</th><td>{{ target['id'] }}</td></tr>
+  <tr><th>Username</th><td>{{ target['username'] }}</td></tr>
+  <tr><th>Email</th><td>{{ target['email'] }}</td></tr>
+  <tr><th>Role</th><td>{{ target['role'] }}</td></tr>
+</table>
+<h3>Notes</h3>
+{% if notes %}
+<ul>
+  {% for n in notes %}<li>{{ n['content'] }}</li>{% endfor %}
+</ul>
+{% else %}
+<p>No notes.</p>
+{% endif %}
+{% if target['id'] != viewer.get('user_id') %}
+<p class="error">You are viewing another user's profile and notes without an ownership check.</p>
+{% endif %}
+{% endblock %}
