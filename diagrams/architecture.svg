@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  architecture.svg — RabTech Academy Task 02
+  System Architecture Diagram
+  Scope: LAB-01 (127.0.0.1:8080) and LAB-02 (192.168.56.20)
+  No external dependencies. No JavaScript. No remote resources.
+-->
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="900"
+  height="620"
+  viewBox="0 0 900 620"
+  role="img"
+  aria-labelledby="arch-title arch-desc">
+
+  <title id="arch-title">RabTech Academy Task 02 — System Architecture Diagram</title>
+  <desc id="arch-desc">
+    System architecture showing the Assessment Host containing LAB-01 (localhost web app
+    at 127.0.0.1:8080) and connected via host-only network to LAB-02 (vulnerable VM at
+    192.168.56.20). No external internet access is implied.
+  </desc>
+
+  <!-- Arrow marker definitions -->
+  <defs>
+    <marker id="arrow-approved" markerWidth="10" markerHeight="7"
+            refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2e7d32"/>
+    </marker>
+    <marker id="arrow-internal" markerWidth="10" markerHeight="7"
+            refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#1565c0"/>
+    </marker>
+    <marker id="arrow-blocked" markerWidth="10" markerHeight="7"
+            refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#c62828"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="620" fill="#f8f9fa" rx="6" ry="6"/>
+
+  <!-- ============================================================
+       TITLE BAR
+  ============================================================ -->
+  <rect x="0" y="0" width="900" height="44" fill="#1a237e" rx="6" ry="6"/>
+  <rect x="0" y="38" width="900" height="6" fill="#1a237e"/>
+  <text x="450" y="28" font-family="Arial, Helvetica, sans-serif"
+        font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">
+    RabTech Academy — Task 02: System Architecture Diagram
+  </text>
+
+  <!-- ============================================================
+       ASSESSMENT HOST (outer boundary)
+  ============================================================ -->
+  <rect x="20" y="60" width="860" height="480" rx="10" ry="10"
+        fill="#e8f0fe" stroke="#3949ab" stroke-width="2.5" stroke-dasharray="8,4"/>
+  <text x="30" y="82" font-family="Arial, Helvetica, sans-serif"
+        font-size="12" font-weight="bold" fill="#283593">
+    ASSESSMENT HOST (Student Machine)
+  </text>
+
+  <!-- ============================================================
+       BROWSER / TESTING TOOLS (top-left inside assessment host)
+  ============================================================ -->
+  <rect x="40" y="95" width="200" height="120" rx="8" ry="8"
+        fill="#ffffff" stroke="#5c6bc0" stroke-width="1.5"/>
+  <text x="140" y="116" font-family="Arial, Helvetica, sans-serif"
+        font-size="11" font-weight="bold" fill="#283593" text-anchor="middle">
+    Assessor Tools
+  </text>
+  <!-- Browser icon (simplified) -->
+  <rect x="60" y="125" width="70" height="46" rx="4" ry="4"
+        fill="#e3f2fd" stroke="#1976d2" stroke-width="1"/>
+  <rect x="60" y="125" width="70" height="12" rx="4" ry="4" fill="#1976d2"/>
+  <text x="95" y="134" font-family="Arial, Helvetica, sans-serif"
+        font-size="7" fill="#ffffff" text-anchor="middle">Browser</text>
+  <text x="95" y="148" font-family="Arial, Helvetica, sans-serif"
+        font-size="7" fill="#1976d2" text-anchor="middle">HTTP Client</text>
+  <text x="95" y="160" font-family="Arial, Helvetica, sans-serif"
+        font-size="7" fill="#1976d2" text-anchor="middle">DevTools</text>
+
+  <!-- Tools icon -->
+  <rect x="150" y="125" width="70" height="46" rx="4" ry="4"
+        fill="#e3f2fd" stroke="#1976d2" stroke-width="1"/>
+  <rect x="150" y="125" width="70" height="12" rx="4" ry="4" fill="#1976d2"/>
+  <text x="185" y="134" font-family="Arial, Helvetica, sans-serif"
+        font-size="7" fill="#ffffff" text-anchor="middle">CLI Tools</text>
+  <text x="185" y="148" font-family="Arial, Helvetica, sans-serif"
+        font-size="7" fill="#1976d2" text-anchor="middle">curl / python</text>
+  <text x="185" y="160" font-family="Arial, Helvetica, sans-serif"
+        font-size="7" fill="#1976d2" text-anchor="middle">manual testing</text>
+
+  <!-- ============================================================
+       LAB-01 boundary
+  ============================================================ -->
+  <rect x="280" y="80" width="320" height="380" rx="8" ry="8"
+        fill="#e8f5e9" stroke="#2e7d32" stroke-width="2"/>
+  <rect x="280" y="80" width="320" height="28" rx="8" ry="8" fill="#2e7d32"/>
+  <rect x="280" y="96" width="320" height="12" fill="#2e7d32"/>
+  <text x="440" y="99" font-family="Arial, Helvetica, sans-serif"
+        font-size="11" font-weight="bold" fill="#ffffff" text-anchor="middle">
+    LAB-01 — Local Training Web App
+  </text>
+  <text x="440" y="120" font-family="Arial, Helvetica, sans-serif"
+        font-size="10" fill="#1b5e20" text-anchor="middle">
+    Asset ID: LAB-01  |  Binding: 127.0.0.1:8080  |  Localhost ONLY
+  </text>
+
+  <!-- Flask application box -->
+  <rect x="300" y="135" width="140" height="80" rx="6" ry="6"
+        fill="#ffffff" stroke="#388e3c" stroke-width="1.5"/>
+  <rect x="300" y="135" width="140" height="20" rx="6" ry="6" fill="#388e3c"/>
+  <rect x="300" y="147" width="140" height="8" fill="#388e3c"/>
+  <text x="370" y="149" font-family="Arial, Helvetica, sans-serif"
+        font-size="9" font-weight="bold" fill="#ffffff" text-anchor="middle">
+    Flask Application
+  </text>
+  <text x="370" y="167" font-family="Arial, Helvetica, sans-serif"
+        font-size="9" fill="#2e7d32" text-anchor="middle">app.py</text>
+  <text x="370" y="179" font-family="Arial, Helvetica, sans-serif"
+        font-size="9" fill="#2e7d32" text-anchor="middle">Port 8080</text>
+  <text x="370" y="192" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#c62828" text-anchor="middle">debug=True [VULN]</text>
+  <text x="370" y="204" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#c62828" text-anchor="middle">static secret_key [VULN]</text>
+
+  <!-- Routes list box -->
+  <rect x="300" y="228" width="140" height="120" rx="6" ry="6"
+        fill="#ffffff" stroke="#388e3c" stroke-width="1.5"/>
+  <rect x="300" y="228" width="140" height="18" rx="6" ry="6" fill="#388e3c"/>
+  <rect x="300" y="238" width="140" height="8" fill="#388e3c"/>
+  <text x="370" y="241" font-family="Arial, Helvetica, sans-serif"
+        font-size="9" font-weight="bold" fill="#ffffff" text-anchor="middle">
+    Routes (Vulnerable)
+  </text>
+  <text x="308" y="258" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#2e7d32">POST /login — SQLi [T-001]</text>
+  <text x="308" y="270" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#2e7d32">GET /profile/&lt;id&gt; — IDOR [T-002]</text>
+  <text x="308" y="282" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#2e7d32">GET /search?q= — RXss [T-003]</text>
+  <text x="308" y="294" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#2e7d32">POST /comments — SXss [T-004]</text>
+  <text x="308" y="306" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#c62828">GET /admin — No Role Chk [T-005]</text>
+  <text x="308" y="318" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#2e7d32">GET /reset-lab</text>
+  <text x="308" y="330" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#2e7d32">GET /, /dashboard, /logout</text>
+  <text x="308" y="342" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#2e7d32">Jinja2 templates/ + static/</text>
+
+  <!-- SQLite Database box -->
+  <rect x="460" y="135" width="120" height="80" rx="6" ry="6"
+        fill="#ffffff" stroke="#388e3c" stroke-width="1.5"/>
+  <rect x="460" y="135" width="120" height="20" rx="6" ry="6" fill="#388e3c"/>
+  <rect x="460" y="147" width="120" height="8" fill="#388e3c"/>
+  <text x="520" y="149" font-family="Arial, Helvetica, sans-serif"
+        font-size="9" font-weight="bold" fill="#ffffff" text-anchor="middle">
+    SQLite Database
+  </text>
+  <text x="520" y="167" font-family="Arial, Helvetica, sans-serif"
+        font-size="9" fill="#2e7d32" text-anchor="middle">lab01.db</text>
+  <text x="520" y="179" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#c62828" text-anchor="middle">Plaintext passwords [T-007]</text>
+  <text x="520" y="191" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#2e7d32" text-anchor="middle">users / notes / comments</text>
+  <text x="520" y="203" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#c62828" text-anchor="middle">No param. in /login [T-001]</text>
+
+  <!-- Seeded accounts box -->
+  <rect x="460" y="228" width="120" height="80" rx="6" ry="6"
+        fill="#fff8e1" stroke="#f9a825" stroke-width="1.5"/>
+  <text x="520" y="245" font-family="Arial, Helvetica, sans-serif"
+        font-size="9" font-weight="bold" fill="#e65100" text-anchor="middle">
+    Seeded Accounts
+  </text>
+  <text x="520" y="259" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#5d4037" text-anchor="middle">Training data only</text>
+  <text x="520" y="271" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#5d4037" text-anchor="middle">admin / alice / bob</text>
+  <text x="520" y="283" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#c62828" text-anchor="middle">Passwords stored plaintext</text>
+  <text x="520" y="295" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#c62828" text-anchor="middle">[VULN T-007]</text>
+
+  <!-- LAB-01 localhost label -->
+  <rect x="285" y="380" width="308" height="70" rx="4" ry="4"
+        fill="#c8e6c9" stroke="#2e7d32" stroke-width="1" stroke-dasharray="4,3"/>
+  <text x="439" y="398" font-family="Arial, Helvetica, sans-serif"
+        font-size="9" font-weight="bold" fill="#1b5e20" text-anchor="middle">
+    LOCALHOST BOUNDARY (Loopback 127.0.0.1)
+  </text>
+  <text x="439" y="411" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#2e7d32" text-anchor="middle">
+    OS loopback — not reachable from external networks
+  </text>
+  <text x="439" y="423" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#2e7d32" text-anchor="middle">
+    app.run(host="127.0.0.1", port=8080) — hardcoded in app.py
+  </text>
+  <text x="439" y="437" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#2e7d32" text-anchor="middle">
+    Trust Boundary TB-01: Assessor Browser ↔ Flask App
+  </text>
+  <text x="439" y="449" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#c62828" text-anchor="middle">
+    TB-03: App ↔ DB   TB-04: User Input → App   TB-05: App → Admin/Priv
+  </text>
+
+  <!-- ============================================================
+       HOST-ONLY NETWORK boundary
+  ============================================================ -->
+  <rect x="640" y="80" width="220" height="380" rx="8" ry="8"
+        fill="#e3f2fd" stroke="#1565c0" stroke-width="2"/>
+  <rect x="640" y="80" width="220" height="28" rx="8" ry="8" fill="#1565c0"/>
+  <rect x="640" y="96" width="220" height="12" fill="#1565c0"/>
+  <text x="750" y="99" font-family="Arial, Helvetica, sans-serif"
+        font-size="11" font-weight="bold" fill="#ffffff" text-anchor="middle">
+    HOST-ONLY NETWORK
+  </text>
+  <text x="750" y="120" font-family="Arial, Helvetica, sans-serif"
+        font-size="9" fill="#0d47a1" text-anchor="middle">
+    192.168.56.0/24 — No NAT / No Bridge / No Internet
+  </text>
+
+  <!-- LAB-02 box -->
+  <rect x="660" y="135" width="180" height="160" rx="6" ry="6"
+        fill="#ffffff" stroke="#1565c0" stroke-width="1.5"/>
+  <rect x="660" y="135" width="180" height="20" rx="6" ry="6" fill="#1565c0"/>
+  <rect x="660" y="147" width="180" height="8" fill="#1565c0"/>
+  <text x="750" y="149" font-family="Arial, Helvetica, sans-serif"
+        font-size="9" font-weight="bold" fill="#ffffff" text-anchor="middle">
+    LAB-02 — Vulnerable VM
+  </text>
+  <text x="750" y="167" font-family="Arial, Helvetica, sans-serif"
+        font-size="9" fill="#0d47a1" text-anchor="middle">IP: 192.168.56.20</text>
+  <text x="750" y="179" font-family="Arial, Helvetica, sans-serif"
+        font-size="9" fill="#0d47a1" text-anchor="middle">VirtualBox / VMware</text>
+  <text x="750" y="191" font-family="Arial, Helvetica, sans-serif"
+        font-size="9" fill="#0d47a1" text-anchor="middle">Host-only adapter ONLY</text>
+  <text x="750" y="203" font-family="Arial, Helvetica, sans-serif"
+        font-size="9" fill="#0d47a1" text-anchor="middle">Owner: RabTech lab</text>
+
+  <!-- NOT VERIFIED badge -->
+  <rect x="670" y="215" width="160" height="36" rx="4" ry="4"
+        fill="#fff3e0" stroke="#e65100" stroke-width="1" stroke-dasharray="4,2"/>
+  <text x="750" y="230" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" font-weight="bold" fill="#bf360c" text-anchor="middle">
+    Services: NOT VERIFIED
+  </text>
+  <text x="750" y="243" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#bf360c" text-anchor="middle">
+    Ports / OS / Vulns unconfirmed
+  </text>
+  <text x="750" y="262" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#0d47a1" text-anchor="middle">
+    No outbound traffic allowed
+  </text>
+  <text x="750" y="275" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#0d47a1" text-anchor="middle">
+    No persistence allowed
+  </text>
+  <text x="750" y="288" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#0d47a1" text-anchor="middle">
+    No pivoting to/from LAB-01
+  </text>
+
+  <!-- TB-02 label -->
+  <rect x="655" y="330" width="188" height="120" rx="4" ry="4"
+        fill="#bbdefb" stroke="#1565c0" stroke-width="1" stroke-dasharray="4,3"/>
+  <text x="749" y="348" font-family="Arial, Helvetica, sans-serif"
+        font-size="9" font-weight="bold" fill="#0d47a1" text-anchor="middle">
+    TB-02: Host-Only Network Boundary
+  </text>
+  <text x="749" y="361" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#0d47a1" text-anchor="middle">
+    Host gateway: 192.168.56.1
+  </text>
+  <text x="749" y="373" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#0d47a1" text-anchor="middle">
+    No default gateway on LAB-02
+  </text>
+  <text x="749" y="385" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#c62828" text-anchor="middle">
+    Stop if outbound traffic detected
+  </text>
+  <text x="749" y="397" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#0d47a1" text-anchor="middle">
+    Hypervisor enforces isolation
+  </text>
+  <text x="749" y="409" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#0d47a1" text-anchor="middle">
+    TB-05: Assessment Host →
+  </text>
+  <text x="749" y="421" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#0d47a1" text-anchor="middle">
+    Host-only Network → LAB-02
+  </text>
+  <text x="749" y="440" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#c62828" text-anchor="middle">
+    ⚠ LAB-02 is NOT internet-accessible
+  </text>
+
+  <!-- ============================================================
+       OUT OF SCOPE box
+  ============================================================ -->
+  <rect x="20" y="555" width="860" height="50" rx="6" ry="6"
+        fill="#ffebee" stroke="#c62828" stroke-width="1.5" stroke-dasharray="6,3"/>
+  <text x="450" y="573" font-family="Arial, Helvetica, sans-serif"
+        font-size="10" font-weight="bold" fill="#c62828" text-anchor="middle">
+    OUT OF SCOPE — PROHIBITED TARGETS
+  </text>
+  <text x="450" y="588" font-family="Arial, Helvetica, sans-serif"
+        font-size="9" fill="#c62828" text-anchor="middle">
+    Internet ✗  |  GitHub.com (publication only) ✗  |  College/University Networks ✗  |  Personal Devices ✗  |  Third-Party Systems ✗
+  </text>
+
+  <!-- ============================================================
+       ARROWS
+  ============================================================ -->
+
+  <!-- Browser/Tools → Flask (HTTP TB-01) -->
+  <line x1="240" y1="155" x2="280" y2="175"
+        stroke="#2e7d32" stroke-width="1.8"
+        marker-end="url(#arrow-approved)"/>
+  <text x="257" y="158" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#2e7d32" text-anchor="middle">HTTP</text>
+  <text x="253" y="168" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#2e7d32" text-anchor="middle">TB-01</text>
+
+  <!-- Flask → SQLite (SQL queries TB-03) -->
+  <line x1="440" y1="175" x2="460" y2="175"
+        stroke="#1565c0" stroke-width="1.5"
+        marker-end="url(#arrow-internal)"/>
+  <text x="450" y="167" font-family="Arial, Helvetica, sans-serif"
+        font-size="7" fill="#1565c0" text-anchor="middle">SQL/TB-03</text>
+
+  <!-- Assessor → LAB-02 (host-only TB-02) -->
+  <line x1="240" y1="185" x2="640" y2="205"
+        stroke="#1565c0" stroke-width="1.5" stroke-dasharray="6,3"
+        marker-end="url(#arrow-internal)"/>
+  <text x="450" y="188" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#1565c0" text-anchor="middle">Host-only Network / TB-02</text>
+  <text x="450" y="198" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#1565c0" text-anchor="middle">192.168.56.1 → 192.168.56.20</text>
+
+  <!-- ============================================================
+       LEGEND
+  ============================================================ -->
+  <rect x="22" y="460" width="250" height="90" rx="4" ry="4"
+        fill="#ffffff" stroke="#9e9e9e" stroke-width="1"/>
+  <text x="147" y="477" font-family="Arial, Helvetica, sans-serif"
+        font-size="9" font-weight="bold" fill="#333" text-anchor="middle">Legend</text>
+  <!-- Approved testing -->
+  <line x1="32" y1="490" x2="62" y2="490" stroke="#2e7d32" stroke-width="2"
+        marker-end="url(#arrow-approved)"/>
+  <text x="68" y="494" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#2e7d32">Approved testing flow</text>
+  <!-- Internal flow -->
+  <line x1="32" y1="505" x2="62" y2="505" stroke="#1565c0" stroke-width="2"
+        stroke-dasharray="5,3" marker-end="url(#arrow-internal)"/>
+  <text x="68" y="509" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#1565c0">Host-only network flow</text>
+  <!-- Internal flow solid -->
+  <line x1="32" y1="520" x2="62" y2="520" stroke="#1565c0" stroke-width="2"
+        marker-end="url(#arrow-internal)"/>
+  <text x="68" y="524" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#1565c0">Internal application flow</text>
+  <!-- Vuln note -->
+  <rect x="32" y="533" width="8" height="8" fill="#ffebee" stroke="#c62828" stroke-width="1"/>
+  <text x="45" y="541" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#c62828">[VULN] Intentional vulnerability</text>
+  <!-- Not verified note -->
+  <rect x="32" y="547" width="8" height="8" fill="#fff3e0" stroke="#e65100" stroke-width="1"
+        stroke-dasharray="2,1"/>
+  <text x="45" y="555" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#bf360c">NOT VERIFIED — requires confirmation</text>
+</svg>

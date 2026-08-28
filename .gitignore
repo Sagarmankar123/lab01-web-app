@@ -5,14 +5,20 @@ __pycache__/
 *.pyd
 .Python
 venv/
+.venv/
 env/
 ENV/
+secrets/
 
 # Database
 lab01.db
 
 # Logs
 server.log
+*.log
+
+# Evidence
+evidence/raw/
 
 # Environment
 .env

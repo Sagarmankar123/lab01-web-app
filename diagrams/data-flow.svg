@@ -1,0 +1,565 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  data-flow.svg — RabTech Academy Task 02
+  Data-Flow Diagram (DFD)
+  Shows all LAB-01 data flows, evidence collection, and LAB-02 network path.
+  No external dependencies. No JavaScript. No remote resources.
+-->
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="960"
+  height="820"
+  viewBox="0 0 960 820"
+  role="img"
+  aria-labelledby="dfd-title dfd-desc">
+
+  <title id="dfd-title">RabTech Academy Task 02 — Data-Flow Diagram</title>
+  <desc id="dfd-desc">
+    Data-flow diagram showing flows between the Assessor/Browser, LAB-01 Flask
+    application, training database, and evidence collection. Also shows the
+    host-only network path to LAB-02. Trust boundaries TB-01 through TB-05
+    are clearly marked. No data flows to the public internet.
+  </desc>
+
+  <!-- Arrow marker definitions -->
+  <defs>
+    <marker id="dfd-arrow-green" markerWidth="10" markerHeight="7"
+            refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2e7d32"/>
+    </marker>
+    <marker id="dfd-arrow-blue" markerWidth="10" markerHeight="7"
+            refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#1565c0"/>
+    </marker>
+    <marker id="dfd-arrow-red" markerWidth="10" markerHeight="7"
+            refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#c62828"/>
+    </marker>
+    <marker id="dfd-arrow-orange" markerWidth="10" markerHeight="7"
+            refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#e65100"/>
+    </marker>
+    <marker id="dfd-arrow-purple" markerWidth="10" markerHeight="7"
+            refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#6a1b9a"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="960" height="820" fill="#f8f9fa" rx="6" ry="6"/>
+
+  <!-- Title bar -->
+  <rect x="0" y="0" width="960" height="44" fill="#4a148c" rx="6" ry="6"/>
+  <rect x="0" y="38" width="960" height="6" fill="#4a148c"/>
+  <text x="480" y="28" font-family="Arial, Helvetica, sans-serif"
+        font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">
+    RabTech Academy — Task 02: Data-Flow Diagram
+  </text>
+
+  <!-- ============================================================
+       ROW 1: ASSESSOR / BROWSER
+  ============================================================ -->
+  <rect x="20" y="60" width="180" height="90" rx="8" ry="8"
+        fill="#fff3e0" stroke="#e65100" stroke-width="2"/>
+  <rect x="20" y="60" width="180" height="24" rx="8" ry="8" fill="#e65100"/>
+  <rect x="20" y="76" width="180" height="8" fill="#e65100"/>
+  <text x="110" y="77" font-family="Arial, Helvetica, sans-serif"
+        font-size="10" font-weight="bold" fill="#ffffff" text-anchor="middle">
+    Assessor / Browser
+  </text>
+  <text x="110" y="97" font-family="Arial, Helvetica, sans-serif"
+        font-size="9" fill="#e65100" text-anchor="middle">Human operator</text>
+  <text x="110" y="110" font-family="Arial, Helvetica, sans-serif"
+        font-size="9" fill="#bf360c" text-anchor="middle">Assessment host machine</text>
+  <text x="110" y="123" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#bf360c" text-anchor="middle">Browser / curl / DevTools</text>
+  <text x="110" y="136" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#bf360c" text-anchor="middle">≤10 req/min — manual only</text>
+
+  <!-- ============================================================
+       TB-01 BOUNDARY: Browser ↔ Flask (vertical dashed line)
+  ============================================================ -->
+  <line x1="250" y1="55" x2="250" y2="520"
+        stroke="#2e7d32" stroke-width="1.5" stroke-dasharray="8,4"/>
+  <text x="248" y="52" font-family="Arial, Helvetica, sans-serif"
+        font-size="9" font-weight="bold" fill="#1b5e20" text-anchor="end">TB-01</text>
+  <text x="248" y="530" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#1b5e20" text-anchor="end">Localhost</text>
+  <text x="248" y="542" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#1b5e20" text-anchor="end">Boundary</text>
+
+  <!-- ============================================================
+       LAB-01 Flask application (center column)
+  ============================================================ -->
+  <rect x="260" y="55" width="370" height="480" rx="8" ry="8"
+        fill="#e8f5e9" stroke="#2e7d32" stroke-width="2"/>
+  <rect x="260" y="55" width="370" height="24" rx="8" ry="8" fill="#2e7d32"/>
+  <rect x="260" y="71" width="370" height="8" fill="#2e7d32"/>
+  <text x="445" y="72" font-family="Arial, Helvetica, sans-serif"
+        font-size="11" font-weight="bold" fill="#ffffff" text-anchor="middle">
+    LAB-01: Flask Application (127.0.0.1:8080)
+  </text>
+
+  <!-- URL Router -->
+  <rect x="345" y="90" width="200" height="36" rx="5" ry="5"
+        fill="#c8e6c9" stroke="#388e3c" stroke-width="1.5"/>
+  <text x="445" y="103" font-family="Arial, Helvetica, sans-serif"
+        font-size="9" font-weight="bold" fill="#1b5e20" text-anchor="middle">
+    URL Router (app.py)
+  </text>
+  <text x="445" y="116" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#2e7d32" text-anchor="middle">
+    All HTTP requests dispatched here
+  </text>
+
+  <!-- DF-01: Auth (SQLi) -->
+  <rect x="270" y="145" width="160" height="74" rx="5" ry="5"
+        fill="#ffebee" stroke="#c62828" stroke-width="1.5"/>
+  <rect x="270" y="145" width="160" height="18" rx="5" ry="5" fill="#c62828"/>
+  <rect x="270" y="156" width="160" height="7" fill="#c62828"/>
+  <text x="350" y="158" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" font-weight="bold" fill="#ffffff" text-anchor="middle">
+    POST /login [T-001]
+  </text>
+  <text x="350" y="174" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#b71c1c" text-anchor="middle">SQL Injection via</text>
+  <text x="350" y="185" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#b71c1c" text-anchor="middle">string concatenation</text>
+  <text x="350" y="196" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#333" text-anchor="middle">username / password input</text>
+  <text x="350" y="207" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#b71c1c" text-anchor="middle">→ Session cookie set</text>
+  <text x="350" y="216" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#b71c1c" text-anchor="middle">STRIDE: Tampering</text>
+
+  <!-- DF-02: IDOR -->
+  <rect x="450" y="145" width="168" height="74" rx="5" ry="5"
+        fill="#ffebee" stroke="#c62828" stroke-width="1.5"/>
+  <rect x="450" y="145" width="168" height="18" rx="5" ry="5" fill="#c62828"/>
+  <rect x="450" y="156" width="168" height="7" fill="#c62828"/>
+  <text x="534" y="158" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" font-weight="bold" fill="#ffffff" text-anchor="middle">
+    GET /profile/&lt;id&gt; [T-002]
+  </text>
+  <text x="534" y="174" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#b71c1c" text-anchor="middle">IDOR — session check only</text>
+  <text x="534" y="185" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#b71c1c" text-anchor="middle">No ownership verification</text>
+  <text x="534" y="196" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#333" text-anchor="middle">id from URL path param</text>
+  <text x="534" y="207" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#b71c1c" text-anchor="middle">→ Any user's profile + notes</text>
+  <text x="534" y="216" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#b71c1c" text-anchor="middle">STRIDE: Tampering</text>
+
+  <!-- DF-03: Reflected XSS -->
+  <rect x="270" y="235" width="160" height="70" rx="5" ry="5"
+        fill="#fff3e0" stroke="#e65100" stroke-width="1.5"/>
+  <rect x="270" y="235" width="160" height="18" rx="5" ry="5" fill="#e65100"/>
+  <rect x="270" y="246" width="160" height="7" fill="#e65100"/>
+  <text x="350" y="248" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" font-weight="bold" fill="#ffffff" text-anchor="middle">
+    GET /search?q= [T-003]
+  </text>
+  <text x="350" y="264" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#bf360c" text-anchor="middle">Reflected XSS via |safe</text>
+  <text x="350" y="275" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#bf360c" text-anchor="middle">q= reflected unescaped</text>
+  <text x="350" y="286" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#333" text-anchor="middle">→ JS executes in browser</text>
+  <text x="350" y="297" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#bf360c" text-anchor="middle">STRIDE: Info Disclosure</text>
+
+  <!-- DF-04: Stored XSS -->
+  <rect x="450" y="235" width="168" height="70" rx="5" ry="5"
+        fill="#fff3e0" stroke="#e65100" stroke-width="1.5"/>
+  <rect x="450" y="235" width="168" height="18" rx="5" ry="5" fill="#e65100"/>
+  <rect x="450" y="246" width="168" height="7" fill="#e65100"/>
+  <text x="534" y="248" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" font-weight="bold" fill="#ffffff" text-anchor="middle">
+    POST /comments [T-004]
+  </text>
+  <text x="534" y="264" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#bf360c" text-anchor="middle">Stored XSS — payload stored</text>
+  <text x="534" y="275" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#bf360c" text-anchor="middle">Renders |safe for all visitors</text>
+  <text x="534" y="286" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#333" text-anchor="middle">→ Persistent JS execution</text>
+  <text x="534" y="297" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#bf360c" text-anchor="middle">STRIDE: Tampering</text>
+
+  <!-- DF-05: Admin (broken authz) -->
+  <rect x="270" y="320" width="160" height="70" rx="5" ry="5"
+        fill="#f3e5f5" stroke="#6a1b9a" stroke-width="2"/>
+  <rect x="270" y="320" width="160" height="18" rx="5" ry="5" fill="#6a1b9a"/>
+  <rect x="270" y="331" width="160" height="7" fill="#6a1b9a"/>
+  <text x="350" y="333" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" font-weight="bold" fill="#ffffff" text-anchor="middle">
+    GET /admin [T-005] CRITICAL
+  </text>
+  <text x="350" y="349" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#4a148c" text-anchor="middle">Missing role check</text>
+  <text x="350" y="360" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#4a148c" text-anchor="middle">Any session → admin panel</text>
+  <text x="350" y="371" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#333" text-anchor="middle">→ All users + plaintext PWs</text>
+  <text x="350" y="382" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#4a148c" text-anchor="middle">STRIDE: Elev. of Privilege</text>
+
+  <!-- DF-06: Debug mode -->
+  <rect x="450" y="320" width="168" height="70" rx="5" ry="5"
+        fill="#e3f2fd" stroke="#1565c0" stroke-width="1.5"/>
+  <rect x="450" y="320" width="168" height="18" rx="5" ry="5" fill="#1565c0"/>
+  <rect x="450" y="331" width="168" height="7" fill="#1565c0"/>
+  <text x="534" y="333" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" font-weight="bold" fill="#ffffff" text-anchor="middle">
+    app.debug=True [T-006]
+  </text>
+  <text x="534" y="349" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#0d47a1" text-anchor="middle">Error → stack trace exposed</text>
+  <text x="534" y="360" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#0d47a1" text-anchor="middle">Werkzeug PIN → RCE risk</text>
+  <text x="534" y="371" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#333" text-anchor="middle">e.g. /profile/abc → error</text>
+  <text x="534" y="382" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#0d47a1" text-anchor="middle">STRIDE: Info Disclosure</text>
+
+  <!-- Session secret note -->
+  <rect x="270" y="406" width="348" height="38" rx="4" ry="4"
+        fill="#fce4ec" stroke="#880e4f" stroke-width="1.5"/>
+  <text x="444" y="420" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" font-weight="bold" fill="#880e4f" text-anchor="middle">
+    Static secret_key [T-008] — Session Spoofing risk
+  </text>
+  <text x="444" y="433" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#880e4f" text-anchor="middle">
+    app.secret_key = "lab01-static-secret-key" in source → session forgery possible | STRIDE: Spoofing
+  </text>
+
+  <!-- TB-04 label inside Flask box -->
+  <rect x="270" y="455" width="175" height="30" rx="3" ry="3"
+        fill="#c8e6c9" stroke="#2e7d32" stroke-width="1" stroke-dasharray="3,2"/>
+  <text x="357" y="467" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" font-weight="bold" fill="#1b5e20" text-anchor="middle">
+    TB-04: User Input → App Processing
+  </text>
+  <text x="357" y="479" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#2e7d32" text-anchor="middle">
+    No validation / encoding (deliberate)
+  </text>
+
+  <!-- TB-05 label inside Flask box -->
+  <rect x="455" y="455" width="168" height="30" rx="3" ry="3"
+        fill="#c8e6c9" stroke="#2e7d32" stroke-width="1" stroke-dasharray="3,2"/>
+  <text x="539" y="467" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" font-weight="bold" fill="#1b5e20" text-anchor="middle">
+    TB-05: App → Privileged Function
+  </text>
+  <text x="539" y="479" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#2e7d32" text-anchor="middle">
+    Session check only — no RBAC
+  </text>
+
+  <!-- ============================================================
+       TB-03 BOUNDARY: Flask ↔ DB (vertical dashed line right side)
+  ============================================================ -->
+  <line x1="650" y1="55" x2="650" y2="520"
+        stroke="#1565c0" stroke-width="1.5" stroke-dasharray="8,4"/>
+  <text x="652" y="52" font-family="Arial, Helvetica, sans-serif"
+        font-size="9" font-weight="bold" fill="#0d47a1">TB-03</text>
+  <text x="652" y="530" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#0d47a1">App–DB</text>
+  <text x="652" y="542" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#0d47a1">Boundary</text>
+
+  <!-- ============================================================
+       TRAINING DATABASE (right column)
+  ============================================================ -->
+  <rect x="660" y="55" width="280" height="480" rx="8" ry="8"
+        fill="#f3e5f5" stroke="#6a1b9a" stroke-width="2"/>
+  <rect x="660" y="55" width="280" height="24" rx="8" ry="8" fill="#6a1b9a"/>
+  <rect x="660" y="71" width="280" height="8" fill="#6a1b9a"/>
+  <text x="800" y="72" font-family="Arial, Helvetica, sans-serif"
+        font-size="11" font-weight="bold" fill="#ffffff" text-anchor="middle">
+    Training Database (lab01.db)
+  </text>
+  <text x="800" y="90" font-family="Arial, Helvetica, sans-serif"
+        font-size="9" fill="#4a148c" text-anchor="middle">
+    SQLite 3 — In-process connection
+  </text>
+
+  <!-- users table -->
+  <rect x="670" y="102" width="258" height="115" rx="5" ry="5"
+        fill="#ffffff" stroke="#7b1fa2" stroke-width="1.5"/>
+  <rect x="670" y="102" width="258" height="18" rx="5" ry="5" fill="#7b1fa2"/>
+  <rect x="670" y="113" width="258" height="7" fill="#7b1fa2"/>
+  <text x="799" y="115" font-family="Arial, Helvetica, sans-serif"
+        font-size="9" font-weight="bold" fill="#ffffff" text-anchor="middle">
+    Table: users [T-007]
+  </text>
+  <text x="678" y="132" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#4a148c">id INTEGER PK AUTOINCREMENT</text>
+  <text x="678" y="144" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#4a148c">username TEXT UNIQUE NOT NULL</text>
+  <text x="678" y="156" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#c62828">password TEXT — PLAINTEXT [VULN]</text>
+  <text x="678" y="168" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#4a148c">role TEXT DEFAULT 'user'</text>
+  <text x="678" y="180" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#4a148c">email TEXT</text>
+  <text x="678" y="193" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#888">admin/alice/bob (training data)</text>
+  <text x="678" y="205" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#c62828">Exposed via /admin without role check</text>
+
+  <!-- notes table -->
+  <rect x="670" y="228" width="258" height="80" rx="5" ry="5"
+        fill="#ffffff" stroke="#7b1fa2" stroke-width="1.5"/>
+  <rect x="670" y="228" width="258" height="18" rx="5" ry="5" fill="#7b1fa2"/>
+  <rect x="670" y="239" width="258" height="7" fill="#7b1fa2"/>
+  <text x="799" y="241" font-family="Arial, Helvetica, sans-serif"
+        font-size="9" font-weight="bold" fill="#ffffff" text-anchor="middle">
+    Table: notes
+  </text>
+  <text x="678" y="259" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#4a148c">id INTEGER PK AUTOINCREMENT</text>
+  <text x="678" y="271" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#4a148c">user_id INTEGER NOT NULL (FK → users)</text>
+  <text x="678" y="283" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#4a148c">content TEXT NOT NULL</text>
+  <text x="678" y="295" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#888">Exposed via IDOR on /profile/&lt;id&gt;</text>
+
+  <!-- comments table -->
+  <rect x="670" y="322" width="258" height="80" rx="5" ry="5"
+        fill="#ffffff" stroke="#7b1fa2" stroke-width="1.5"/>
+  <rect x="670" y="322" width="258" height="18" rx="5" ry="5" fill="#7b1fa2"/>
+  <rect x="670" y="333" width="258" height="7" fill="#7b1fa2"/>
+  <text x="799" y="335" font-family="Arial, Helvetica, sans-serif"
+        font-size="9" font-weight="bold" fill="#ffffff" text-anchor="middle">
+    Table: comments [T-004]
+  </text>
+  <text x="678" y="353" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#4a148c">id INTEGER PK AUTOINCREMENT</text>
+  <text x="678" y="365" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#4a148c">author TEXT NOT NULL</text>
+  <text x="678" y="377" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#c62828">content TEXT — stored XSS payloads</text>
+  <text x="678" y="389" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#888">Rendered |safe → executes for all users</text>
+
+  <!-- Session store note -->
+  <rect x="670" y="417" width="258" height="60" rx="5" ry="5"
+        fill="#fce4ec" stroke="#880e4f" stroke-width="1.5"/>
+  <text x="799" y="434" font-family="Arial, Helvetica, sans-serif"
+        font-size="9" font-weight="bold" fill="#880e4f" text-anchor="middle">
+    Session Store (Browser Cookie) [T-008]
+  </text>
+  <text x="678" y="449" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#880e4f">Flask signed cookie — HMAC with static key</text>
+  <text x="678" y="461" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#880e4f">Key in source → forgeable offline</text>
+  <text x="678" y="473" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#888">user_id / username / role</text>
+
+  <!-- ============================================================
+       EVIDENCE COLLECTION (bottom center)
+  ============================================================ -->
+  <rect x="260" y="548" width="370" height="110" rx="8" ry="8"
+        fill="#e8f5e9" stroke="#2e7d32" stroke-width="2"/>
+  <rect x="260" y="548" width="370" height="24" rx="8" ry="8" fill="#2e7d32"/>
+  <rect x="260" y="564" width="370" height="8" fill="#2e7d32"/>
+  <text x="445" y="565" font-family="Arial, Helvetica, sans-serif"
+        font-size="11" font-weight="bold" fill="#ffffff" text-anchor="middle">
+    Evidence Collection (Controlled Flow)
+  </text>
+  <text x="445" y="585" font-family="Arial, Helvetica, sans-serif"
+        font-size="9" fill="#1b5e20" text-anchor="middle">
+    Assessor captures minimum-necessary evidence per RoE
+  </text>
+  <text x="445" y="598" font-family="Arial, Helvetica, sans-serif"
+        font-size="9" fill="#1b5e20" text-anchor="middle">
+    Redact: passwords / session tokens / PIN → [REDACTED] before storage
+  </text>
+  <text x="445" y="611" font-family="Arial, Helvetica, sans-serif"
+        font-size="9" fill="#1b5e20" text-anchor="middle">
+    evidence/raw/ → gitignored  |  evidence/*.png → tracked (redacted)
+  </text>
+  <text x="445" y="624" font-family="Arial, Helvetica, sans-serif"
+        font-size="9" fill="#1b5e20" text-anchor="middle">
+    Associated with Finding ID (FIND-YYYY-NNN) per findings/finding-template.md
+  </text>
+  <text x="445" y="637" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#c62828" text-anchor="middle">
+    NO data flows to internet / third-party systems
+  </text>
+  <text x="445" y="649" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#c62828" text-anchor="middle">
+    NO uncontrolled data extraction | NO persistence
+  </text>
+
+  <!-- ============================================================
+       LAB-02 SECTION (bottom right)
+  ============================================================ -->
+  <rect x="660" y="548" width="280" height="150" rx="8" ry="8"
+        fill="#e3f2fd" stroke="#1565c0" stroke-width="2"/>
+  <rect x="660" y="548" width="280" height="24" rx="8" ry="8" fill="#1565c0"/>
+  <rect x="660" y="564" width="280" height="8" fill="#1565c0"/>
+  <text x="800" y="565" font-family="Arial, Helvetica, sans-serif"
+        font-size="11" font-weight="bold" fill="#ffffff" text-anchor="middle">
+    LAB-02 Network Flow
+  </text>
+  <text x="800" y="585" font-family="Arial, Helvetica, sans-serif"
+        font-size="9" fill="#0d47a1" text-anchor="middle">
+    Assessment Host → Host-Only Adapter →
+  </text>
+  <text x="800" y="597" font-family="Arial, Helvetica, sans-serif"
+        font-size="9" fill="#0d47a1" text-anchor="middle">
+    LAB-02 VM (192.168.56.20)
+  </text>
+  <text x="800" y="609" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#0d47a1" text-anchor="middle">
+    TB-02 / TB-05: Host → Host-Only → LAB-02
+  </text>
+  <rect x="670" y="622" width="258" height="38" rx="4" ry="4"
+        fill="#fff3e0" stroke="#e65100" stroke-width="1" stroke-dasharray="4,2"/>
+  <text x="799" y="636" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" font-weight="bold" fill="#bf360c" text-anchor="middle">
+    Services: NOT VERIFIED
+  </text>
+  <text x="799" y="648" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#bf360c" text-anchor="middle">
+    No outbound / No internet / No pivoting
+  </text>
+  <text x="799" y="660" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#bf360c" text-anchor="middle">
+    Evidence → evidence/ (redacted)
+  </text>
+  <text x="799" y="672" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#c62828" text-anchor="middle">
+    STOP if outbound traffic from LAB-02 detected
+  </text>
+
+  <!-- ============================================================
+       OUT OF SCOPE (bottom)
+  ============================================================ -->
+  <rect x="20" y="710" width="920" height="50" rx="6" ry="6"
+        fill="#ffebee" stroke="#c62828" stroke-width="1.5" stroke-dasharray="6,3"/>
+  <text x="480" y="730" font-family="Arial, Helvetica, sans-serif"
+        font-size="10" font-weight="bold" fill="#c62828" text-anchor="middle">
+    NO DATA FLOWS TO: Internet  |  GitHub.com (publication only)  |  College Networks  |  Personal Devices  |  Third-Party Services
+  </text>
+  <text x="480" y="748" font-family="Arial, Helvetica, sans-serif"
+        font-size="9" fill="#c62828" text-anchor="middle">
+    All data remains within the isolated lab environment (127.0.0.1 and 192.168.56.0/24)
+  </text>
+
+  <!-- ============================================================
+       ARROWS / FLOWS
+  ============================================================ -->
+  <!-- Assessor → Router (HTTP request TB-01) -->
+  <line x1="200" y1="105" x2="345" y2="108"
+        stroke="#2e7d32" stroke-width="1.8"
+        marker-end="url(#dfd-arrow-green)"/>
+  <text x="270" y="97" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#2e7d32" text-anchor="middle">HTTP Request</text>
+  <text x="270" y="107" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#2e7d32" text-anchor="middle">TB-01</text>
+
+  <!-- Router → login -->
+  <line x1="345" y1="118" x2="350" y2="145"
+        stroke="#1565c0" stroke-width="1.2"
+        marker-end="url(#dfd-arrow-blue)"/>
+  <!-- Router → profile -->
+  <line x1="545" y1="118" x2="534" y2="145"
+        stroke="#1565c0" stroke-width="1.2"
+        marker-end="url(#dfd-arrow-blue)"/>
+  <!-- Router → search -->
+  <line x1="345" y1="118" x2="350" y2="235"
+        stroke="#1565c0" stroke-width="1.2"
+        marker-end="url(#dfd-arrow-blue)"/>
+  <!-- Router → comments -->
+  <line x1="545" y1="118" x2="534" y2="235"
+        stroke="#1565c0" stroke-width="1.2"
+        marker-end="url(#dfd-arrow-blue)"/>
+  <!-- Router → admin -->
+  <line x1="345" y1="118" x2="350" y2="320"
+        stroke="#6a1b9a" stroke-width="1.5"
+        marker-end="url(#dfd-arrow-purple)"/>
+  <!-- Router → debug -->
+  <line x1="545" y1="118" x2="534" y2="320"
+        stroke="#1565c0" stroke-width="1.2"
+        marker-end="url(#dfd-arrow-blue)"/>
+
+  <!-- Flask → Database (TB-03) -->
+  <line x1="630" y1="175" x2="660" y2="175"
+        stroke="#1565c0" stroke-width="1.8"
+        marker-end="url(#dfd-arrow-blue)"/>
+  <text x="645" y="167" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#1565c0" text-anchor="middle">SQL</text>
+  <text x="645" y="177" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#1565c0" text-anchor="middle">TB-03</text>
+
+  <!-- Flask response → Assessor -->
+  <line x1="260" y1="130" x2="200" y2="130"
+        stroke="#2e7d32" stroke-width="1.5"
+        marker-end="url(#dfd-arrow-green)"/>
+  <text x="225" y="122" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#2e7d32" text-anchor="middle">HTTP</text>
+  <text x="225" y="132" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#2e7d32" text-anchor="middle">Response</text>
+
+  <!-- Assessor → Evidence (capture) -->
+  <line x1="110" y1="150" x2="300" y2="555"
+        stroke="#2e7d32" stroke-width="1.2" stroke-dasharray="5,3"
+        marker-end="url(#dfd-arrow-green)"/>
+  <text x="185" y="380" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#2e7d32" text-anchor="middle">Evidence</text>
+  <text x="185" y="392" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#2e7d32" text-anchor="middle">capture</text>
+  <text x="185" y="404" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#2e7d32" text-anchor="middle">(redacted)</text>
+
+  <!-- Assessor → LAB-02 (host-only) -->
+  <line x1="200" y1="120" x2="660" y2="580"
+        stroke="#1565c0" stroke-width="1.5" stroke-dasharray="6,3"
+        marker-end="url(#dfd-arrow-blue)"/>
+  <text x="510" y="480" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#1565c0" text-anchor="middle">Host-only / TB-02</text>
+
+  <!-- ============================================================
+       LEGEND
+  ============================================================ -->
+  <rect x="20" y="548" width="234" height="155" rx="4" ry="4"
+        fill="#ffffff" stroke="#9e9e9e" stroke-width="1"/>
+  <text x="137" y="567" font-family="Arial, Helvetica, sans-serif"
+        font-size="10" font-weight="bold" fill="#333" text-anchor="middle">Legend</text>
+  <line x1="30" y1="581" x2="70" y2="581" stroke="#2e7d32" stroke-width="2"
+        marker-end="url(#dfd-arrow-green)"/>
+  <text x="76" y="585" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#2e7d32">HTTP flow / Evidence capture</text>
+  <line x1="30" y1="598" x2="70" y2="598" stroke="#1565c0" stroke-width="2"
+        marker-end="url(#dfd-arrow-blue)"/>
+  <text x="76" y="602" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#1565c0">Internal / DB / Network flow</text>
+  <line x1="30" y1="615" x2="70" y2="615" stroke="#6a1b9a" stroke-width="2"
+        marker-end="url(#dfd-arrow-purple)"/>
+  <text x="76" y="619" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#6a1b9a">Priv escalation flow</text>
+  <rect x="30" y="628" width="10" height="10" fill="#ffebee" stroke="#c62828" stroke-width="1"/>
+  <text x="44" y="638" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#c62828">[T-00x] Vuln — STRIDE Tampering/Info Disc</text>
+  <rect x="30" y="644" width="10" height="10" fill="#f3e5f5" stroke="#6a1b9a" stroke-width="1"/>
+  <text x="44" y="654" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#6a1b9a">[T-005] CRITICAL — Elev. of Privilege</text>
+  <rect x="30" y="660" width="10" height="10" fill="#fff3e0" stroke="#e65100"
+        stroke-width="1" stroke-dasharray="2,1"/>
+  <text x="44" y="670" font-family="Arial, Helvetica, sans-serif"
+        font-size="8" fill="#e65100">NOT VERIFIED — unconfirmed detail</text>
+  <text x="30" y="686" font-family="Arial, Helvetica, sans-serif"
+        font-size="7" fill="#555">TB-01: Browser↔Flask (localhost)</text>
+  <text x="30" y="697" font-family="Arial, Helvetica, sans-serif"
+        font-size="7" fill="#555">TB-02: Host↔LAB-02 (host-only)</text>
+  <text x="30" y="708" font-family="Arial, Helvetica, sans-serif"
+        font-size="7" fill="#555">TB-03: Flask↔DB  TB-04: Input→App  TB-05: App→Priv</text>
+</svg>
