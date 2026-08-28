@@ -1,11 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>LAB-01 training web app</h1>
-<p>This is the intentionally vulnerable app defined as asset <strong>LAB-01</strong> in your authorized lab dossier.</p>
-{% if user %}
-  <p>Logged in as <strong>{{ user }}</strong>.</p>
-{% else %}
-  <p>Seeded accounts: admin/admin123, alice/alice123, bob/bob123.</p>
-{% endif %}
-<p>Try: dashboard, profile pages, search, comments, and the admin panel.</p>
+<div class="card">
+  <h1>LAB-01 training web app</h1>
+  <p>This is the intentionally vulnerable app defined as asset <strong class="badge critical">LAB-01</strong> in your authorized lab dossier.</p>
+  {% if user %}
+    <p>Logged in as <strong class="badge role-admin">{{ user }}</strong>.</p>
+  {% else %}
+    <p class="muted">Seeded accounts: <code>admin/admin123</code>, <code>alice/alice123</code>, <code>bob/bob123</code>.</p>
+  {% endif %}
+  <p>Try: dashboard, profile pages, search, comments, and the admin panel.</p>
+</div>
 {% endblock %}

@@ -100,7 +100,7 @@ All evidence collected during this assessment is classified as **Confidential Tr
 
 ### Handling Requirements
 - Evidence must not leave the controlled lab environment
-- Evidence must be redacted per `docs/evidence-handling.md` before any storage or sharing
+- Evidence must be redacted per `evidence/README.md` before any storage or sharing.
 - Raw evidence must be deleted within [To be defined by lab owner] after assessment completion
 - Only minimum necessary evidence to substantiate findings may be retained
 - No real credentials, API keys, tokens, or personal data may be committed to version control

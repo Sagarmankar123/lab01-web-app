@@ -173,7 +173,7 @@ flowchart TD
 ## Phase 5: Evidence Capture
 
 **Standards**:
-- **Screenshots**: PNG format, 1920x1080 max, redacted per `docs/evidence-handling.md`
+- **Screenshots**: PNG format, 1920x1080 max, redacted per `evidence/README.md`.
 - **Logs**: Request/response pairs (curl -v output), redacted
 - **Configuration**: Source code snippets, config file excerpts
 - **Naming**: `evidence/FIND-YYYY-NNN-description.png`

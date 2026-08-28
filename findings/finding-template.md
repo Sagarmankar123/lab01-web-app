@@ -6,7 +6,7 @@
 2. Fill in all sections completely
 3. Reference evidence files in `evidence/`
 4. Cross-reference Threat ID (T-XXX) and Test ID (T-XXX)
-5. Do not commit until evidence is redacted per `docs/evidence-handling.md`
+5. Do not commit until evidence is redacted per `evidence/README.md`.
 
 ---
 

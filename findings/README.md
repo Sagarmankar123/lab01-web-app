@@ -50,7 +50,7 @@ Examples:
 Each finding must reference evidence files in `evidence/`:
 - Format: `evidence/FIND-YYYY-NNN-description.png`
 - Multiple evidence files allowed per finding
-- All evidence must be redacted per `docs/evidence-handling.md`
+- All evidence must be redacted per `evidence/README.md`.
 
 ## Cross-References
 

@@ -90,7 +90,7 @@ This document records the execution results of the test plan defined in `testing
    - Signed Rules of Engagement
    - Approved testing window
    - Lab owner authorization
-3. Evidence will be captured per `docs/evidence-handling.md` and `docs/testing-methodology.md`
+3. Evidence will be captured per `evidence/README.md` and `docs/testing-methodology.md`.
 4. Findings will be documented per `findings/finding-template.md`
 5. LAB-02 tests remain **NOT EXECUTED** unless explicitly authorized
 
